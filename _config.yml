@@ -5,3 +5,7 @@ title: "Soft Reset"
 author:
   name: Michael Gilchrist
   email: michael@softreset.dev
+
+plugins: [jekyll-paginate]
+paginate: 3
+paginate_path: page:num/

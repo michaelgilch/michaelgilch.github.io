@@ -1,0 +1,19 @@
+.pagination {
+  margin: 1rem 0;
+  position: relative;
+  text-align: center;
+
+  .arrow {
+    font-size: 1.2rem;
+    position: absolute;
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+
+}
