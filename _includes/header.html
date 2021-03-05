@@ -1,0 +1,15 @@
+<header>
+  <div class="header-container">
+    <div class="title-container">
+      <h1 class="title">Soft Reset</h1>
+      <p class="subtitle">Advice, opinions, and revelations of a non-traditional Software Engineer.</p>
+    </div>
+    <nav class="nav-container">
+      <ul>
+        {% for item in site.data.navigation %}
+          <li><a href="{{ item.link }}">{{ item.name }}</a></li>
+          {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
