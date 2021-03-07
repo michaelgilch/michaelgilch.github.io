@@ -10,7 +10,7 @@ body {
 
 header {
   background: $bg-color-accent;
-  box-shadow: 0 4px 10px 0px $shadow-color;
+  box-shadow: 0 4px 10px 0 $shadow-color;
 }
 
 main,
@@ -23,8 +23,8 @@ main,
 }
 
 .footer-container {
-  text-align: center;
   font-size: .9rem;
+  text-align: center;
 }
 
 a {
