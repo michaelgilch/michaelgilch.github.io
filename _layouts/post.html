@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+<div class="content-block">
+  <h2>{{ page.title }}</h2>
+  {% assign words = post.content | strip_html | number_of_words %}
+  <p class="post-details">{{ page.date | date: "%b %d, %Y" }} &emsp; &#183; &emsp;{{ words | divided_by: 180 | plus: 1 }} min</p>
+  <p>{{ content }}</p>
+</div>
