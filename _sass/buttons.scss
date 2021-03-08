@@ -1,28 +1,17 @@
 .btn {
-  background-color: $bg-color-accent;
+  background-color: $btn-color;
   border: 1px solid;
-  border-color: $link-color;
+  border-color: $btn-color-text-accent;
   border-radius: 12px;
-  color: $link-color;
+  color: $btn-color-text;
   cursor: pointer;
   margin: 0;
   padding: .25rem .5rem;
 
   &:hover,
   &:focus {
-    background-color: $bg-color;
-    color: $font-color;
-  }
-}
-
-
-.btn-page-nav {
-  background-color: $bg-color;
-
-  &:hover,
-  &:focus {
-    background-color: $bg-color-content;
-    color: $font-color;
+    background-color: $btn-color-accent;
+    color: $btn-color-text-accent;
   }
 }
 
@@ -32,10 +21,4 @@
 
 .btn-pagination {
   padding: 0 .5rem;
-
-  &:hover,
-  &:focus {
-    background-color: $bg-color-content;
-    color: $font-color;
-  }
 }
