@@ -6,10 +6,18 @@ title: "About"
 
 ## About Me
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec ullamcorper sit amet risus nullam eget felis. Nulla facilisi nullam vehicula ipsum. Senectus et netus et malesuada fames ac turpis egestas sed. Non enim praesent elementum facilisis leo vel. Etiam sit amet nisl purus. Commodo ullamcorper a lacus vestibulum sed arcu. Metus aliquam eleifend mi in. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Ornare aenean euismod elementum nisi quis eleifend quam adipiscing. Tortor at risus viverra adipiscing at in tellus integer. Ultricies leo integer malesuada nunc. Lacus vel facilisis volutpat est velit egestas dui id. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Quis viverra nibh cras pulvinar mattis. Vitae sapien pellentesque habitant morbi tristique senectus. Sagittis orci a scelerisque purus semper eget duis at. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae.
+My name is Michael Gilchrist and I am a non-traditional Software Engineer. By 'non-traditional', I mean I did not obtain a degree in Computer Science or related field. I did not obtain a degree at all, for that matter.
 
-## About SoftReset
+### My Past
 
-Nunc faucibus a pellentesque sit amet porttitor eget. Ligula ullamcorper malesuada proin libero nunc. Potenti nullam ac tortor vitae purus faucibus. Nibh tellus molestie nunc non blandit massa. Platea dictumst quisque sagittis purus sit. Volutpat est velit egestas dui id ornare arcu. Nunc sed blandit libero volutpat sed cras ornare arcu dui. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Sagittis id consectetur purus ut faucibus pulvinar elementum integer. Massa id neque aliquam vestibulum morbi blandit cursus risus. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Mattis vulputate enim nulla aliquet porttitor lacus. Id interdum velit laoreet id donec ultrices tincidunt. Ac auctor augue mauris augue neque gravida. Amet facilisis magna etiam tempor orci. Tristique sollicitudin nibh sit amet commodo. Quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus.
+I did spend two years studying (or at least pretending to study) Computer Science in college. I was not making much progress, so I took some time off to gather my thoughts. I spent a half decade forgetting most of what little I had learned while working a few general labor jobs. I then got back into tech through an entry level Technical Support position. After a few years, I switched to another company, still providing technical support before getting back into programming. All-in-all, 12+ years from leaving college to re-deciding to start a career in software development.
 
-Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Velit laoreet id donec ultrices. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Phasellus egestas tellus rutrum tellus. Sed arcu non odio euismod lacinia at quis risus. Faucibus purus in massa tempor nec feugiat. Sem et tortor consequat id porta. Proin nibh nisl condimentum id venenatis a condimentum vitae sapien. Suscipit tellus mauris a diam maecenas sed. Eget nunc lobortis mattis aliquam faucibus purus in massa tempor. Turpis cursus in hac habitasse. Id interdum velit laoreet id donec ultrices tincidunt arcu. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Egestas integer eget aliquet nibh praesent tristique. Leo duis ut diam quam nulla.
+### My Present
+
+I am about 6 years in (as of 2021) developing software for a medical device manufacturing company. I develop software for our Radiology and patient safety product lines as well as tools to aide in the manufacturing process.
+
+I have a passion for writing software to improve productivity and believe that using software should be intuitive, requiring little to no instruction.
+
+### My Future
+
+I am starting this blog with the goal of passing along some tips, tricks, and advice to those jumping back into a software career, getting into it for the first time, and those aspiring to be programmers who have not yet started the journey.
