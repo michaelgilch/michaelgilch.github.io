@@ -11,7 +11,7 @@ layout: default
             <p class="post-details">{{ post.date | date: "%b %d, %Y" }} &ensp; &#183; &ensp;{{ words | divided_by: 180 | plus: 1 }} min</p>
             <p>{{ post.content | strip_html | truncatewords: 25 }}</p>
             <div class="btn-post-nav-container">
-                <a href="{{ post.url | prepend: site.url }}"><span class="btn">Read &#8594;</span></a>
+                <a href="{{ post.url | prepend: site.url }}"><span class="">Read &#8594;</span></a>
             </div>
         </div>
     {% endfor %}
@@ -19,10 +19,10 @@ layout: default
 
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow btn btn-pagination"><span>&#8592;</span></a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow"><span>&#8592;</span></a>
   {% endif %}
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow btn btn-pagination"><span>&#8594;</span></a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow"><span>&#8594;</span></a>
   {% endif %}
 
   <span class="page-number">{{ paginator.page }}</span>
