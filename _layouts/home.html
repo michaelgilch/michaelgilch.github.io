@@ -9,7 +9,7 @@ layout: default
             <h2>{{ post.title }}</h2>
             {% assign words = post.content | strip_html | number_of_words %}
             <p class="post-details">{{ post.date | date: "%b %d, %Y" }} &ensp; &#183; &ensp;{{ words | divided_by: 180 | plus: 1 }} min</p>
-            <p>{{ post.content | strip_html | truncatewords: 25 }}</p>
+            <p>{{ post.content | strip_html | truncatewords: 35 }}</p>
             <div class="btn-post-nav-container">
                 <a href="{{ post.url | prepend: site.url }}"><span class="">Read &#8594;</span></a>
             </div>
