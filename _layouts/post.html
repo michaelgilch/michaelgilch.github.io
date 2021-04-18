@@ -7,7 +7,9 @@ layout: default
   {% assign words = page.content | strip_html | number_of_words %}
   <p class="post-details">{{ page.date | date: "%b %d, %Y" }} &emsp; &#183; &emsp;{{ words | divided_by: 180 | plus: 1 }} min</p>
   <p>{{ content }}</p>
+</div>
 
+<div class="content-block">
   <!-- Comments -->
   {% if site.data.comments[page.slug] %}
     <h3>
