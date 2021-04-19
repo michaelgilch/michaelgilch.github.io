@@ -10,4 +10,5 @@ plugins: [jekyll-paginate]
 paginate: 3
 paginate_path: page:num/
 
-staticman_url: https://api.staticman.net/v3/entry/github/michaelgilch/michaelgilch.github.io/master/comments
+# staticman_url: https://api.staticman.net/v3/entry/github/michaelgilch/michaelgilch.github.io/master/comments
+staticman_url: https://softreset-comments.herokuapp.com/v2/entry/github/michaelgilch/michaelgilch.github.io/master/comments
