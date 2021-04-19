@@ -29,7 +29,7 @@
   }
 }
 
-/* Comments Form */
+/* Comments Area and Form */
 
 label {
   font-size: .9rem;
@@ -44,6 +44,16 @@ textarea {
   margin-bottom: 0.5rem;
 }
 
+.hr-with {
+  margin: 0;
+}
+
+.hr-wout {
+  border: none;
+  height: .75rem;
+  margin: 0;
+}
+
 button {
   color: $btn-color;
   border: 1px solid;
@@ -53,6 +63,6 @@ button {
   
   &hover,
   &focus {
-   background-color: $bg-color-accent;
- }
+    background-color: $bg-color-accent;
+  }
 }

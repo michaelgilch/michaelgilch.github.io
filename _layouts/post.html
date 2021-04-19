@@ -9,8 +9,9 @@ layout: default
   <p>{{ content }}</p>
 </div>
 
-{% if site.data.comments[page.slug] %}
+
 <div class="content-block">
+  {% if site.data.comments[page.slug] %}
   <!-- Comments -->
     <h2>
     {% if site.data.comments[page.slug].size > 1 %}
@@ -20,16 +21,12 @@ layout: default
     </h2>
     {% assign comments = site.data.comments[page.slug] | sort %}
     {% for comment in comments %}
-      <label>
-        <strong>{{ comment[1].name }}</strong>
-      </label>
-      <em>{{ comment[1].date | date: "%B %d, %Y" }}</em>
+      <strong>{{ comment[1].name }}</strong> - <em>{{ comment[1].date | date: "%B %d, %Y" }}</em>
+      <hr class="hr-with">
       <p>{{ comment[1].message | markdownify }}</p>
+      <hr class="hr-wout">
     {% endfor %}
-</div>
-{% endif %}
-
-<div class="content-block">
+  {% endif %}   
   <h2>Leave a comment</h2>
   <!-- Comments Form -->
   <form method="POST" action="{{ site.staticman_url }}">
@@ -37,11 +34,11 @@ layout: default
     <input name="options[slug]" type="hidden" value="{{ page.slug }}">
     <label>Name</label>
     <input name="fields[name]" type="text"><br>
-    <label>E-mail (optional)</label>
+    <label>E-mail (not displayed)</label>
     <input name="fields[email]" type="email"><br>
     <label>Message</label>
     <textarea style="width:100%" name="fields[message]" rows="8"></textarea>
     <small>Comments will appear after moderation.</small>
     <button type="submit">Submit</button>
-  </form>
+  </form> 
 </div>
