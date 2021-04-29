@@ -30,14 +30,18 @@ layout: default
   <h2>Leave a comment</h2>
   <!-- Comments Form -->
   <form method="POST" action="{{ site.staticman_url }}">
-    <input name="options[redirect]" type="hidden" value="{{ site.url }}{{ page.url }}">
-    <input name="options[slug]" type="hidden" value="{{ page.slug }}">
+    <input name="options[redirect]"           type="hidden" value="{{ site.url }}{{ page.url }}">
+    <input name="options[slug]"               type="hidden" value="{{ page.slug }}">
+    <input name="options[reCaptcha][siteKey]" type="hidden" value="{{ site.reCaptcha.siteKey }}">
+    <input name="options[reCaptcha][secret]"  type="hidden" value="{{ site.reCaptcha.secret }}">
     <label>Name</label>
     <input name="fields[name]" type="text"><br>
     <label>E-mail (not displayed)</label>
     <input name="fields[email]" type="email"><br>
     <label>Message</label>
     <textarea style="width:100%" name="fields[message]" rows="8"></textarea>
+    <div class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <small>Comments will appear after moderation.</small>
     <button type="submit">Submit</button>
   </form> 
