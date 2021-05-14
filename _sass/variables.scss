@@ -1,19 +1,28 @@
-$bg-color: #7f7f7f;
-$bg-color-accent: #cccccc;
-$bg-color-content: #f2f2f2;
+$color-black:           #000;
+$color-grey:            #7f7f7f;
+$color-grey-very-light: #ccc;
+$color-white-smoke:     #f2f2f2;
+$color-white:           #fff;
+$color-denim:           #155ea2;
+$color-summer-sky:      #3a92e4;
+$color-matterhorn:      #4d4d4d;
 
-$link-color: #155ea2;
-$link-color-accent: #3a92e4;
+$bg-color:              $color-grey;
+$bg-color-accent:       $color-grey-very-light;
+$bg-color-content:      $color-white-smoke;
 
-$btn-color: #155ea2;
-$btn-color-accent: #3a92e4;
-$btn-color-text: #fff;
-$btn-color-text-accent: #000;
+$link-color:            $color-denim;
+$link-color-accent:     $color-summer-sky;
 
-$shadow-color: #4d4d4d;
+$btn-color:             $color-denim;
+$btn-color-accent:      $color-summer-sky;
+$btn-color-text:        $color-white;
+$btn-color-text-accent: $color-black;
 
-$font-color: #000;
-$font-color-accent: #155ea2; 
+$shadow-color:          $color-matterhorn;
 
-$font-main: 'Fira Sans';
-$font-mono: 'Fira Sans Mono';
+$font-color:            $color-black;
+$font-color-accent:     $color-denim;
+
+$font-main:             'Fira Sans';
+$font-mono:             'Fira Sans Mono';
