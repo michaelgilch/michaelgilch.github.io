@@ -6,7 +6,9 @@ author:
   name: Michael Gilchrist
   email: michael@softreset.dev
 
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
 paginate: 3
 paginate_path: page:num/
 
