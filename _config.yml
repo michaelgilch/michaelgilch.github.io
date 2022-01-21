@@ -9,7 +9,7 @@ author:
 plugins:
   - jekyll-paginate
   - jekyll-feed
-paginate: 3
+paginate: 5
 paginate_path: page:num/
 
 staticman_url: https://softreset-comments.herokuapp.com/v2/entry/michaelgilch/michaelgilch.github.io/master/comments
