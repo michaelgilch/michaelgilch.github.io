@@ -1,0 +1,151 @@
+---
+import { PODCAST } from '../../consts';
+---
+
+<section id="about" class="section section--panel about">
+  <div class="about__row">
+    <div class="about__panel">
+      <p class="section__label">My story</p>
+      <h2 class="about__tagline">It always starts with a question.</h2>
+      <div class="about__body">
+        <p>
+          My first job in tech was as a Technical Productivity Consultant,
+          providing off-the-shelf software support to Fortune 500 companies. I
+          helped people get more out of Excel and other everyday applications,
+          often with no screen to look at, so all I could do was ask the right
+          questions until I really understood how things worked. Everything
+          I've learned since, I've learned that way.
+        </p>
+        <p>
+          From there I moved into medical devices, leading the rollout and
+          training of complex systems in hospitals, coordinating multiple
+          departments to ensure smooth adoption and usage in environments
+          that never slow down. No two hospitals ran the same way, so I broke
+          every installation down, customer by customer, distilling it into
+          terms their teams understood to set it up for success in the field.
+          All the while, I was streamlining and automating our own internal
+          processes to cut out the long, tedious work. Eventually that
+          carried me to the engineering side, and now I build those systems
+          myself.
+        </p>
+        <p>
+          The habit follows me home, too. I'll automate anything, and my
+          favorite fixes remove steps instead of adding options. When I'm
+          away from the keyboard, I'm usually building or fixing something,
+          often in the woodshop. Mostly, I just like solving hard problems
+          and helping people do their work better.
+        </p>
+      </div>
+    </div>
+
+    <div class="about__panel">
+      <p class="section__label">What I do</p>
+      <h2 class="about__tagline">
+        I break things down to solve, to simplify, and to teach.
+      </h2>
+      <ul class="about__cards">
+        <li class="about__card">
+          <h3>Solve</h3>
+          <p>
+            Whether it's professional software for a medical device or one of
+            my hobby projects, the approach is the same: understand the whole
+            system, then break the problem into manageable pieces.
+          </p>
+        </li>
+        <li class="about__card">
+          <h3>Simplify</h3>
+          <p>
+            Breaking down complex processes and workflows to trim the
+            unnecessary and automate what's left, from manufacturing and test
+            processes to internal tools. The best fix usually leaves less in
+            the way.
+          </p>
+        </li>
+        <li class="about__card">
+          <h3>Teach</h3>
+          <p>
+            Complex topics, sliced into digestible pieces, first to learn,
+            then to teach. That's the idea behind <strong>8minute.ai</strong>, my
+            podcast helping everyday people make sense of AI. At home, it's
+            whatever my kids are curious about.
+          </p>
+          <a class="about__card-link" href={PODCAST.url} rel="noopener">
+            Listen &rarr;
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The two blocks are separate bordered panels sitting side by side, so this
+     section skips the usual single `.container` panel and lays its own pair
+     out at the wide width. The story gets the larger reading column. */
+  .about__row {
+    max-width: var(--wide-width);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-6);
+    align-items: stretch;
+  }
+  .about__panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-12) var(--space-8);
+  }
+
+  /* Tagline headings are full sentences, so they run a bit smaller than
+     section h2s and balance their wrap instead of leaving a one-word line. */
+  .about__tagline {
+    font-size: clamp(1.5rem, 2.4vw, 1.75rem);
+    text-wrap: balance;
+    margin-bottom: var(--space-6);
+  }
+
+  .about__body {
+    font-size: 1.08rem;
+  }
+  .about__body p {
+    margin-bottom: var(--space-4);
+  }
+  .about__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about__cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+  .about__card {
+    background: var(--color-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-6);
+  }
+  .about__card h3 {
+    margin-bottom: var(--space-1);
+    font-size: 1.05rem;
+  }
+  .about__card p {
+    margin: 0 0 var(--space-2);
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+  .about__card-link {
+    font-weight: 550;
+    font-size: 0.95rem;
+  }
+
+  /* Stack the two panels before the columns get cramped. */
+  @media (max-width: 62rem) {
+    .about__row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

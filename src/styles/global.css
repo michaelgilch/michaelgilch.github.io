@@ -1,0 +1,247 @@
+/* ============================================================================
+   Design tokens
+   Minimal, spacious, light. Tweak these variables to restyle the whole site.
+   ========================================================================== */
+:root {
+  /* Color — Nord (dark). https://www.nordtheme.com/
+     Raised elevation with wide steps for clear separation between levels:
+     page (#242933, darker than Polar Night) < panel (nord1) < card (nord3). */
+  --color-bg: #242933; /* extended Nord night — page (darkest) */
+  --color-surface: #3b4252; /* nord1 — section panels */
+  --color-raised: #4c566a; /* nord3 — project cards / raised buttons (lightest fill) */
+  --color-text: #eceff4; /* nord6  Snow Storm */
+  --color-muted: #aab4c6; /* light Snow Storm grey — keeps AA on the nord1 panels */
+  --color-border: #616e88; /* Nord comment grey — crisp hairline on every level */
+  --color-accent: #88c0d0; /* nord8  Frost cyan */
+  --color-accent-hover: #8fbcbb; /* nord7  Frost */
+  --color-on-accent: #2e3440; /* dark text sits on the light Frost accent */
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  /* Blog list thumbnails render at this ratio; generate post images to match
+     (off-ratio images get center-cropped to it). */
+  --thumb-aspect: 16 / 9;
+  --content-width: 46rem; /* ~736px: comfortable reading measure */
+  --wide-width: 75rem; /* 1200px: full layout width */
+  --measure: 52rem; /* readable cap for text blocks inside the wide container */
+  --header-height: 4rem;
+  --radius: 10px;
+}
+
+/* -----------------------------------------------------------------------------
+   Light theme (Nord Snow Storm). Applied via <html data-theme="light">.
+   Same raised elevation, inverted: page (nord4) < panel (nord6) < card (white).
+   The Frost accent darkens to nord10-ish so links/labels stay legible on light.
+   --------------------------------------------------------------------------- */
+:root[data-theme='light'] {
+  --color-bg: #d8dee9; /* nord4 — page (greyest Snow Storm) */
+  --color-surface: #eceff4; /* nord6 — section panels */
+  --color-raised: #ffffff; /* white — project cards / raised buttons */
+  --color-text: #2e3440; /* nord0  Polar Night */
+  --color-muted: #4c566a; /* nord3 — secondary text */
+  --color-border: #c8d0dd; /* light grey hairline */
+  --color-accent: #4c6f9c; /* darkened Frost blue — AA link/label text on light */
+  --color-accent-hover: #3f5d84; /* deeper Frost blue */
+  --color-on-accent: #eceff4; /* light text on the blue accent */
+}
+
+/* ============================================================================
+   Reset & base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor targets clear the sticky header. */
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-4);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+}
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================================
+   Layout helpers
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.container--wide {
+  max-width: var(--wide-width);
+}
+
+/* Full-width sections used by standalone pages (blog list/article). */
+.section {
+  padding-block: var(--space-24);
+  scroll-margin-top: var(--header-height);
+}
+
+/* Landing-page sections render as bordered "panels" (cards) rather than being
+   separated by divider lines. The panel itself is the centered container; the
+   section wrapper supplies the gap between panels and a screen-edge gutter on
+   small viewports. */
+.section--panel {
+  padding-block: var(--space-6);
+  padding-inline: var(--space-6);
+}
+.section--panel > .container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding-block: var(--space-12);
+  padding-inline: var(--space-8);
+}
+
+.section__label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+/* ============================================================================
+   Buttons & tags
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 550;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.button:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-on-accent);
+  text-decoration: none;
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+.button--ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+/* ============================================================================
+   Accessibility: skip link
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -3rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  transition: top 0.15s ease;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: var(--space-4);
+  color: var(--color-on-accent);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}

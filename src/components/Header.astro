@@ -1,0 +1,188 @@
+---
+import { SITE, NAV } from '../consts';
+---
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <div class="site-header__inner">
+      <a class="wordmark" href="/">{SITE.title}</a>
+
+      <div class="site-header__right">
+        <nav aria-label="Primary">
+          <ul class="nav">
+            {
+              NAV.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle light and dark theme"
+          title="Toggle light and dark theme"
+        >
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+          <svg
+            class="icon-moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Toggle + persist the color theme. Initial theme is set pre-paint by the
+  // inline script in BaseLayout's <head>; this only handles clicks.
+  const btn = document.querySelector('.theme-toggle');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  btn?.addEventListener('click', () => {
+    const next =
+      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    if (meta) {
+      meta.setAttribute('content', next === 'light' ? '#d8dee9' : '#242933');
+    }
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      /* ignore storage errors (private mode, etc.) */
+    }
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Screen-edge gutter, matching the section panels' .section--panel padding, so
+     the centered inner row lines up exactly with the panel borders below. */
+  .site-header__bar {
+    padding-inline: var(--space-6);
+  }
+
+  .site-header__inner {
+    max-width: var(--wide-width);
+    margin-inline: auto;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  .site-header__right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .theme-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+  .theme-toggle svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: block;
+  }
+  /* Show the icon for the theme you'd switch TO: sun in dark, moon in light. */
+  :global([data-theme='dark']) .theme-toggle .icon-moon,
+  :global([data-theme='light']) .theme-toggle .icon-sun {
+    display: none;
+  }
+
+  .wordmark {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    font-size: 1.05rem;
+  }
+  .wordmark:hover {
+    text-decoration: none;
+    color: var(--color-accent);
+  }
+
+  .nav {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav a:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  /* On small screens, hide the wordmark and let the nav breathe. */
+  @media (max-width: 34rem) {
+    .wordmark {
+      display: none;
+    }
+    .site-header__inner {
+      justify-content: center;
+    }
+    .nav {
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav a {
+      font-size: 0.85rem;
+    }
+  }
+</style>

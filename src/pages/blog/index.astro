@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts, formatDate } from '../../utils';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout title="Blog" description="Articles and write-ups by Michael Gilchrist.">
+  <section class="section section--panel">
+    <div class="container container--wide">
+      <p class="section__label">Blog</p>
+      <h1>Blog</h1>
+      <p class="muted blog-index__intro">Everything I've written, newest first.</p>
+
+      {
+        posts.length === 0 ? (
+          <p class="muted">No posts yet — check back soon.</p>
+        ) : (
+          <ul class="post-list">
+            {posts.map((post) => (
+              <li>
+                {post.data.thumbnail && (
+                  <a href={`/blog/${post.id}/`} tabindex="-1" aria-hidden="true">
+                    <Image
+                      class="post-list__thumb"
+                      src={post.data.thumbnail}
+                      alt=""
+                      width={352}
+                    />
+                  </a>
+                )}
+                <div class="post-list__body">
+                  <a class="post-list__link" href={`/blog/${post.id}/`}>
+                    <span class="post-list__title">{post.data.title}</span>
+                    <time class="post-list__date muted" datetime={post.data.date.toISOString()}>
+                      {formatDate(post.data.date)}
+                    </time>
+                  </a>
+                  <p class="post-list__desc muted">{post.data.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index__intro {
+    margin-bottom: var(--space-8);
+  }
+  /* Shared with the home-page teaser look. */
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .post-list li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-6);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .post-list li:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+  /* Thumbnail at the site-wide ratio (see --thumb-aspect in global.css). */
+  .post-list__thumb {
+    display: block;
+    width: 10rem;
+    height: auto;
+    aspect-ratio: var(--thumb-aspect);
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+  }
+  .post-list__link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    color: var(--color-text);
+  }
+  .post-list__link:hover {
+    text-decoration: none;
+  }
+  .post-list__link:hover .post-list__title {
+    color: var(--color-accent);
+  }
+  .post-list__title {
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  .post-list__date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .post-list__desc {
+    margin: var(--space-2) 0 0;
+    font-size: 0.98rem;
+    max-width: var(--measure);
+  }
+
+  /* Phones / small tablets: stack each entry — full-width thumbnail first,
+     then title, with date and description under it. */
+  @media (max-width: 48rem) {
+    .post-list li {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-4);
+    }
+    .post-list__thumb {
+      width: 100%;
+    }
+    .post-list__link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+  }
+</style>
