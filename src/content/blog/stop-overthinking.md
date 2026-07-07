@@ -11,11 +11,11 @@ Stop overthinking it. That's what gets people stuck.
 
 I've been in groups with people new to AI where someone more experienced jumps in and says things like:
 
-"Oh you have to use this model for A, and this other model for B."
+_"Oh you have to use this model for A, and this other model for B."_
 
-"You have to pay for the Pro plan or you'll run into issues."
+_"You have to pay for the Pro plan or you'll run into issues."_
 
-"Use this Skill and this Plugin for way better results."
+_"Use this Skill and this Plugin for way better results."_
 
 That's all garbage for someone new. Overwhelming and unnecessary.
 
@@ -41,7 +41,7 @@ And if it's token limits, that's worth a second look too. Sometimes the fix isn'
 
 Leave the custom instructions, the agent skills, the plugins alone for now.
 
-Get used to the base model first. Once you know what it can really do on its own, you'll actually know where the real gaps are. That's when adding something on top makes sense — instead of just adding noise.
+Get used to the base model first. Once you know what it can really do on its own, you'll actually know where the real gaps are. That's when adding something on top makes sense, instead of just adding noise.
 
 When you do get there, add one thing at a time. You want to know what's actually helping.
 
