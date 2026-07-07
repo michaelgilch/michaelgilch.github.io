@@ -25,7 +25,7 @@ Here's how to actually learn AI without spinning your wheels.
 
 Actually, pick a provider. OpenAI, Anthropic, or Google. Then use their default model for a while. 
 
-The provider you pick matters a lot less than people online will have you believe. And the model matters even less when you're just starting out and getting used to the mindset shift. 
+The provider you pick matters a lot less than people online will have you believe. And the model matters even less when you're just starting out and getting used to [the mindset shift](/blog/the-ai-mindset-shift/). 
 
 Once you have a strong base of how to interact with a language model, the differences between models become easier to wrap your head around.
 
