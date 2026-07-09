@@ -1,0 +1,36 @@
+---
+import { PROJECTS } from '../../data/projects';
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="projects" class="section section--panel">
+  <div class="container container--wide">
+    <p class="section__label">Projects</p>
+    <h2>Things I've built</h2>
+    <p class="muted projects__intro">
+      A few projects I'm happy to show off.
+    </p>
+
+    <div class="projects__grid">
+      {PROJECTS.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__intro {
+    max-width: 40rem;
+    margin-bottom: var(--space-8);
+  }
+  .projects__grid {
+    display: grid;
+    gap: var(--space-6);
+    /* Auto-fit, but never more than 3 per row: each track must be at least a
+       third of the row (minus the two gaps), so a fourth can't fit. Below
+       ~3x16rem the 16rem floor takes over and it collapses to 2, then 1. */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, max(16rem, calc((100% - 2 * var(--space-6)) / 3))), 1fr)
+    );
+  }
+</style>

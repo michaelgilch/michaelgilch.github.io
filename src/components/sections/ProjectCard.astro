@@ -1,0 +1,78 @@
+---
+import type { Project } from '../../data/projects';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<article class="card">
+  <h3 class="card__title">{project.name}</h3>
+  <p class="card__desc">{project.description}</p>
+
+  {
+    project.tech.length > 0 && (
+      <ul class="card__tech">
+        {project.tech.map((t) => (
+          <li class="tag">{t}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="card__links">
+    {
+      project.repo && (
+        <a href={project.repo} rel="noopener">
+          Code →
+        </a>
+      )
+    }
+    {
+      project.demo && (
+        <a href={project.demo} rel="noopener">
+          Live →
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+    transform: translateY(-2px);
+  }
+  .card__title {
+    margin-bottom: var(--space-2);
+  }
+  .card__desc {
+    color: var(--color-muted);
+    font-size: 0.98rem;
+    flex-grow: 1;
+  }
+  .card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: var(--space-2) 0 var(--space-4);
+    padding: 0;
+  }
+  .card__links {
+    display: flex;
+    gap: var(--space-6);
+    font-weight: 550;
+    font-size: 0.95rem;
+  }
+</style>
