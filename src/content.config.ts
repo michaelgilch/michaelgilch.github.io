@@ -2,9 +2,16 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 // Blog posts live as Markdown in src/content/blog/. Add a post by dropping in a
-// new .md file with the frontmatter fields below.
+// new .md file with the frontmatter fields below. A `YYYY-MM-DD-` filename
+// prefix keeps posts sorted on disk; it is stripped from the URL, so
+// 2026-07-07-stop-overthinking.md still publishes at /blog/stop-overthinking/.
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/blog',
+    generateId: ({ entry }) =>
+      entry.replace(/\.md$/, '').replace(/(^|\/)\d{4}-\d{2}-\d{2}-/, '$1'),
+  }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
