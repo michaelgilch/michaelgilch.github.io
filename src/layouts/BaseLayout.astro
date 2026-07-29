@@ -55,6 +55,14 @@ const canonical = Astro.site
     <meta name="twitter:card" content="summary" />
 
     <meta name="generator" content={Astro.generator} />
+    {import.meta.env.PROD && (
+        <script
+            defer
+            src="https://analytics.michaelgilchrist.dev/script.js"
+            data-website-id="5facad9b-5771-478b-bb26-a2e6190f5c9a"
+            data-domains="michaelgilchrist.dev"
+        />
+    )}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
