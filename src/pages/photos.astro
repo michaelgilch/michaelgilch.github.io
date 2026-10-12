@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { PHOTOS } from '../data/photos';
+---
+
+<BaseLayout title="Photos" description="A wall of photos from conferences, travel, and everything in between.">
+  <section class="section section--panel">
+    <div class="container container--wide">
+      <p class="section__label">Photos</p>
+      <h1>Photos</h1>
+      <p class="muted photos__intro">
+        Conferences, travel, and whatever else was worth pointing a camera at. Newest first.
+      </p>
+
+      {
+        PHOTOS.length === 0 ? (
+          <p class="muted">Nothing here yet — check back soon.</p>
+        ) : (
+          <PhotoGrid photos={PHOTOS} />
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .photos__intro {
+    margin-bottom: var(--space-8);
+    max-width: var(--measure);
+  }
+</style>

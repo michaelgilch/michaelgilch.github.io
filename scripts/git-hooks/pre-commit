@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#
+# Reject oversized images before they enter history.
+#
+# Git keeps every version of every blob forever, so a committed 7MB photo stays
+# in the clone even after it's deleted or replaced. Astro optimizes the *output*
+# (dist/ gets webp + srcset), but the source file is what git carries — so the
+# only place to catch this is before the commit.
+#
+# This hook refuses to shrink anything for you on purpose: a hook that rewrites
+# staged content means you commit something other than what you reviewed. It
+# fails, you run `shrink-photos`, you re-stage.
+#
+# Enable (once per clone):
+#   git config core.hooksPath scripts/git-hooks
+#
+# Bypass for a one-off:
+#   git commit --no-verify
+#
+set -euo pipefail
+
+MAX_KB=500
+
+oversized=()
+
+# --diff-filter=ACM: added, copied, or modified. Deletions and renames of
+# already-committed files can't introduce new bytes, so they're not our problem.
+while IFS= read -r -d '' file; do
+  # Size of the STAGED blob, not the working-tree file. These differ whenever
+  # something was staged and then edited again, and the staged bytes are what
+  # the commit would actually contain.
+  size=$(git cat-file -s ":$file" 2>/dev/null) || continue
+  kb=$(( (size + 1023) / 1024 ))
+  if [ "$kb" -gt "$MAX_KB" ]; then
+    oversized+=("$(printf '%7s KB  %s' "$kb" "$file")")
+  fi
+done < <(
+  git diff --cached --name-only --diff-filter=ACM -z -- \
+    ':(icase)*.jpg' ':(icase)*.jpeg' ':(icase)*.png' \
+    ':(icase)*.webp' ':(icase)*.avif' ':(icase)*.gif' ':(icase)*.tif' ':(icase)*.tiff'
+)
+
+if [ ${#oversized[@]} -eq 0 ]; then
+  exit 0
+fi
+
+exec >&2
+echo
+echo "  Commit blocked: ${#oversized[@]} staged image(s) over ${MAX_KB}KB."
+echo
+printf '    %s\n' "${oversized[@]}"
+echo
+echo "  Shrink them, then re-stage:"
+echo
+echo "    shrink-photos -i <file>...     # resize to 2000px, strip EXIF/GPS"
+echo "    git add <file>..."
+echo
+echo "  Deliberate exception? git commit --no-verify"
+echo
+exit 1

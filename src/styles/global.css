@@ -37,6 +37,8 @@
   /* Blog list thumbnails render at this ratio; generate post images to match
      (off-ratio images get center-cropped to it). */
   --thumb-aspect: 16 / 9;
+  /* Photo wall tiles crop to this ratio; the lightbox shows the full frame. */
+  --photo-aspect: 4 / 3;
   --content-width: 46rem; /* ~736px: comfortable reading measure */
   --wide-width: 75rem; /* 1200px: full layout width */
   --measure: 52rem; /* readable cap for text blocks inside the wide container */

@@ -1,0 +1,31 @@
+---
+import PhotoGrid from '../PhotoGrid.astro';
+import { PHOTOS } from '../../data/photos';
+
+const photos = PHOTOS.slice(0, 4);
+---
+
+{
+  photos.length > 0 && (
+    <section id="photos" class="section section--panel">
+      <div class="container container--wide">
+        <p class="section__label">Photos</p>
+        <h2>Recent shots</h2>
+
+        <PhotoGrid photos={photos} variant="strip" />
+
+        <a class="photos__all" href="/photos/">
+          View all photos →
+        </a>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .photos__all {
+    display: inline-block;
+    margin-top: var(--space-8);
+    font-weight: 550;
+  }
+</style>
