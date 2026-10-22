@@ -9,9 +9,9 @@ import { SITE } from '../../consts';
       <p class="hero__tagline">{SITE.tagline}</p>
 
       <p class="hero__mission">
-        Closing the gap for everyday people<br class="hero__mission-br" />
-        who just want to use technology<br class="hero__mission-br" />
-        without feeling left behind.
+        <span class="hero__mission-line">Closing the gap for everyday people</span>&#32;<span
+          class="hero__mission-line">who just want to use technology</span>&#32;<span
+          class="hero__mission-line">without feeling left behind.</span>
       </p>
 
       <p class="hero__intro">
@@ -66,13 +66,19 @@ import { SITE } from '../../consts';
 
   /* Chosen line breaks for the mission ("...people / ...technology / ...").
      Only enforced once the wide container is maxed out and the line lengths
-     stop changing; below that the text wraps naturally. */
-  .hero__mission-br {
-    display: none;
-  }
+     stop changing; below that the lines run inline and wrap naturally.
+
+     These are spans flipped to block rather than <br>s toggled on and off,
+     and the word space between them is written as a literal &#32;. Astro's
+     HTML compressor strips source whitespace between elements, so a plain
+     space or newline there does not survive the build; with a <br> that left
+     "peoplewho" as soon as the <br> was hidden. &#32; is not whitespace in
+     the source, so it survives, and it is an ordinary collapsible space in
+     the output: it renders between the lines while they are inline, and is
+     dropped as end-of-line whitespace once they become blocks. */
   @media (min-width: 75rem) {
-    .hero__mission-br {
-      display: inline;
+    .hero__mission-line {
+      display: block;
     }
   }
 
