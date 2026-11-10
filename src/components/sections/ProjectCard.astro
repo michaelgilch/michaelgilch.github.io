@@ -1,15 +1,34 @@
 ---
+import { Image } from 'astro:assets';
 import type { Project } from '../../data/projects';
 
 interface Props {
   project: Project;
 }
 const { project } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/projects/*.{png,jpg,jpeg,webp,avif,svg}'
+);
+
+let image: ImageMetadata | undefined;
+if (project.image) {
+  const load = images[`../../assets/projects/${project.image}`];
+  if (!load) {
+    throw new Error(
+      `Project "${project.name}": image "${project.image}" not found in src/assets/projects/`
+    );
+  }
+  image = (await load()).default;
+}
 ---
 
 <article class="card">
-  <h3 class="card__title">{project.name}</h3>
-  <p class="card__desc">{project.description}</p>
+  <div class:list={['card__main', { 'card__main--img': image }]}>
+    {image && <Image class="card__img" src={image} alt="" width={256} />}
+    <h3 class="card__title">{project.name}</h3>
+    <p class="card__desc">{project.description}</p>
+  </div>
 
   {
     project.tech.length > 0 && (
@@ -48,18 +67,67 @@ const { project } = Astro.props;
     border-radius: var(--radius);
     padding: var(--space-6);
     transition: border-color 0.15s ease, transform 0.15s ease;
+    container: card / inline-size;
   }
   .card:hover {
     border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
     transform: translateY(-2px);
   }
+  /* Title + description. The 1fr row lets the description absorb extra
+     height so tags and links sit at the bottom of equal-height cards. */
+  .card__main {
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: var(--space-2);
+  }
+  /* Narrow card: small image beside the title, description full width. */
+  .card__main--img {
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      'img title'
+      'desc desc';
+    column-gap: var(--space-4);
+  }
+  .card__main--img .card__img {
+    grid-area: img;
+    align-self: start;
+  }
+  .card__main--img .card__title {
+    grid-area: title;
+    align-self: center;
+  }
+  .card__main--img .card__desc {
+    grid-area: desc;
+  }
+  /* Wide card: larger image spanning title and description. 21rem of
+     content leaves the text ~190px beside a 128px image. */
+  @container card (min-width: 21rem) {
+    .card__main--img {
+      grid-template-columns: 128px 1fr;
+      grid-template-areas:
+        'img title'
+        'img desc';
+    }
+    .card__main--img .card__title {
+      align-self: start;
+    }
+  }
+  .card__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    /* Non-square sources crop instead of stretching. */
+    object-fit: cover;
+    border-radius: calc(var(--radius) * 0.75);
+    border: 1px solid var(--color-border);
+  }
   .card__title {
-    margin-bottom: var(--space-2);
+    margin: 0;
   }
   .card__desc {
     color: var(--color-muted);
     font-size: 0.98rem;
-    flex-grow: 1;
   }
   .card__tech {
     display: flex;
