@@ -19,14 +19,14 @@ export const PROJECTS: Project[] = [
     repo: 'https://github.com/michaelgilch/wspr',
     demo: undefined,
   },
-  // {
-  //   name: 'hark',
-  //   description:
-  //     'Another short blurb. Keep these punchy — the goal is to make a visitor curious enough to click through.',
-  //   tech: ['Python', 'PostgreSQL'],
-  //   repo: 'https://github.com/michaelgilch/hark',
-  //   demo: undefined,
-  // },
+  {
+    name: 'doc-converter',
+    description:
+      'Simple, yet effective, markdown to pdf/html converter. AI produces Markdown. I read HTML (or PDF). This makes it easy without burning tokens.',
+    tech: ['bash', 'pandoc', 'weasyprint'],
+    repo: 'https://github.com/michaelgilch/doc-converter',
+    demo: undefined,
+  },
   // {
   //   name: 'iris',
   //   description:
