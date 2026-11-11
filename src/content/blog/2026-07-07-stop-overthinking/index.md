@@ -2,7 +2,7 @@
 title: 'Stop Over-thinking'
 description: 'Getting started without spinning your wheels.'
 date: 2026-07-07
-thumbnail: ./images/stop-overthinking.png
+thumbnail: ./cover.png
 ---
 
 You don't need the right model, the right plan, or the right setup to get started with AI. 

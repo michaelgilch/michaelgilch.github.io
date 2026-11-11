@@ -19,5 +19,6 @@ pnpm-debug.log*
 # macOS / editor cruft
 .DS_Store
 
-# Draft posts
-src/content/blog/drafts/
+# Draft posts: blog folders without a YYYY-MM-DD- prefix stay local.
+src/content/blog/*/
+!src/content/blog/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*/

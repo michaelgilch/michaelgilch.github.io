@@ -2,7 +2,7 @@
 title: 'You Don''t Need a Project'
 description: 'Just talking to it counts. That is the practice.'
 date: 2026-09-11
-thumbnail: ./images/you-dont-need-a-project.png
+thumbnail: ./cover.png
 ---
 
 I often hear beginners told to find a use case first. Pick a real task from your work and let AI help you with it.

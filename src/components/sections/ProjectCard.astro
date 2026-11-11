@@ -1,26 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import type { Project } from '../../data/projects';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  project: Project;
+  project: CollectionEntry<'projects'>['data'];
 }
 const { project } = Astro.props;
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/projects/*.{png,jpg,jpeg,webp,avif,svg}'
-);
-
-let image: ImageMetadata | undefined;
-if (project.image) {
-  const load = images[`../../assets/projects/${project.image}`];
-  if (!load) {
-    throw new Error(
-      `Project "${project.name}": image "${project.image}" not found in src/assets/projects/`
-    );
-  }
-  image = (await load()).default;
-}
+const { image } = project;
 ---
 
 <article class="card">

@@ -2,7 +2,7 @@
 title: 'You''re Not Behind'
 description: 'Everyone is early. Including the experts.'
 date: 2026-08-26
-thumbnail: ./images/youre-not-behind.png
+thumbnail: ./cover.png
 ---
 
 Your coworkers keep mentioning AI like it's obvious. Your feed is full of people doing incredible things with it. It's easy to look at all that and assume everyone else already gets it.

@@ -18,27 +18,68 @@ npm run preview  # serve the built site locally
 Most copy lives in a few files so you rarely touch components:
 
 - `src/consts.ts` — site title, tagline, email, nav, social links
-- `src/data/projects.ts` — the Projects section
 - `src/data/resume.ts` — experience, skills, education
 - `src/components/sections/About.astro` — hero bio text
-- `public/resume.pdf` — the downloadable resume (replace the placeholder)
+- `src/content/site/headshot.jpeg` — the hero photo
+- `public/resume.pdf` — the downloadable resume (replace the placeholder).
+  Stays in `public/` so it keeps a stable `/resume.pdf` URL.
+
+Posts and projects each live in their own folder under `src/content/`, with
+their images next to them:
+
+```
+src/content/
+  blog/
+    2026-07-03-the-ai-mindset-shift/   published: dated folder
+      index.md
+      cover.png
+    keep-the-decisions/                draft: no date in the folder name
+      index.md
+  projects/
+    wspr/
+      index.md
+      image.png
+```
 
 ### Adding a blog post
 
-Drop a Markdown file into `src/content/blog/` with frontmatter:
+Create `src/content/blog/<slug>/index.md`:
 
 ```markdown
 ---
 title: 'My post title'
 description: 'One-line summary for the listing and link previews.'
 date: 2026-07-01
+thumbnail: ./cover.png   # optional, image in the same folder
+draft: true
 ---
 
 Your content...
 ```
 
-It appears on the blog list automatically, and on the home page if it's one of
-the three most recent. Set `draft: true` to hide a work-in-progress post.
+While it's a draft, leave the date off the folder name. To publish, remove
+`draft: true`, set `date`, and rename the folder to `YYYY-MM-DD-<slug>`. The
+date prefix is dropped from the URL, so it publishes at `/blog/<slug>/`. It
+appears on the blog list automatically, and on the home page if it's one of the
+three most recent.
+
+### Adding a project
+
+Create `src/content/projects/<slug>/index.md`:
+
+```markdown
+---
+name: 'my-project'
+description: 'One or two sentences.'
+tech: ['Python', 'Postgres']
+repo: 'https://github.com/michaelgilch/my-project'   # optional
+demo: 'https://example.com'                          # optional
+image: ./image.png                                   # optional, square-ish icon
+order: 3                                             # position on the page
+---
+```
+
+A missing image or a misspelled field fails the build with a clear error.
 
 ## Deploying
 

@@ -2,7 +2,7 @@
 title: 'The Whole Plate'
 description: 'Perishable, durable, enduring: AI skills split three ways.'
 date: 2026-09-21
-thumbnail: ./images/the-whole-plate.png
+thumbnail: ./cover.png
 ---
 
 There is a common worry that keeps people from ever starting with AI: _Everything changes every three months. Whatever I learn now will be obsolete by winter. Why board a moving train?_

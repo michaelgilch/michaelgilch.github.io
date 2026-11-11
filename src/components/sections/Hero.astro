@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE } from '../../consts';
+import headshot from '../../content/site/headshot.jpeg';
 ---
 
 <section class="section section--panel hero">
@@ -23,12 +25,12 @@ import { SITE } from '../../consts';
       </div>
     </div>
 
-    <img
+    <Image
       class="hero__photo"
-      src="/michael.jpeg"
+      src={headshot}
       alt="Michael Gilchrist"
-      width="597"
-      height="725"
+      loading="eager"
+      fetchpriority="high"
     />
   </div>
 </section>

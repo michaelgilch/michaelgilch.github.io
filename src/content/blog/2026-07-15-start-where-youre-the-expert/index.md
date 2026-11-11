@@ -2,7 +2,7 @@
 title: 'Start Where You''re the Expert'
 description: 'Your first conversations should be about things you already know.'
 date: 2026-07-15
-thumbnail: ./images/start-where-youre-the-expert.png
+thumbnail: ./cover.png
 ---
 
 _"Talk to it about something you already know well."_

@@ -2,7 +2,7 @@
 title: 'The AI Mindset Shift'
 description: 'Breaking the habit of expecting determinism.'
 date: 2026-07-03
-thumbnail: ./images/ai-mindset-shift.png
+thumbnail: ./cover.png
 ---
 
 A pattern I keep seeing: people get started with AI and never really get anywhere, because they're still expecting a search engine. 

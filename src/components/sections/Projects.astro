@@ -1,6 +1,10 @@
 ---
-import { PROJECTS } from '../../data/projects';
+import { getCollection } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
 ---
 
 <section id="projects" class="section section--panel">
@@ -12,7 +16,7 @@ import ProjectCard from './ProjectCard.astro';
     </p>
 
     <div class="projects__grid">
-      {PROJECTS.map((project) => <ProjectCard project={project} />)}
+      {projects.map((project) => <ProjectCard project={project.data} />)}
     </div>
   </div>
 </section>
